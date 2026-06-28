@@ -1,3 +1,5 @@
+/* Header for the program. */
+
 /*
     tpedia
     Copyright (C) 2026, Float314
