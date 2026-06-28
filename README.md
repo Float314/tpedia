@@ -10,10 +10,10 @@ Since it is a CLI tool, you may start with -
 type this in your terminal - 
 ```bash
 tpedia
-# Rename your binaries - 
-wpedia
-wikipedia
 ```
+
+> \[!TIP]
+> You can rename your binary to wpedia or tpedia. But be careful if it conflicts with another package (Which can but idk)
 
 ## Why? 
 
@@ -26,6 +26,8 @@ tpedia aims to provide a simple and pleasant Wikipedia experience for TTY users,
 - matjson (lightweight json parsing)
 - FTXUI (rendering in terminal)
 - cpp-httplib
+
++ more
 
 ## Licensing 
 
@@ -48,5 +50,3 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 <img src="https://www.gnu.org/graphics/gplv3-with-text-136x68.png" alt="gnu gpl v3 logo">
 
-> One side note: I would allow and insert wikimedia's Copyright but I 
-> Dont wanna revoke its advertisements clause. But 
