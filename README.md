@@ -1,5 +1,11 @@
 # tpedia - A Terminal Wikipedia for TTYs such as Arch and debian. 
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/float314/tpedia/multi-platform.yml)
+![GitHub License](https://img.shields.io/github/license/float314/tpedia)
+![GitHub Release](https://img.shields.io/github/v/release/float314/tpedia)
+![GitHub Tag](https://img.shields.io/github/v/tag/float314/tpedia)
+
+
 <img src="assets/welcome-screen.png" alt="welcome screen">
 
 A Simple Wikipedia page renderers for teens using Arch and debian TTY (dont judge me, these people are awesome)

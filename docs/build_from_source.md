@@ -40,27 +40,16 @@ where 0 - Compiler (C) and 1 - CXX Compiler
 
 Options can be - 
 
-+------------------+--------------------------+--------------------------------
-| Compiler         |  C Value                 | CXX Value                     |
-+------------------+--------------------------+-------------------------------+
-| clang            |  clang                   | clang++                       |
-+------------------+--------------------------+-------------------------------+
-| MSVC             |  cl                      | cl                            |
-+------------------+--------------------------+-------------------------------|
-| clang-cl         |  clang-cl                | clang-cl                      |
-+-----------------------------------------------------------------------------+
-| GNU              |  gcc                     |  g++                          |
-+-----------------------------------------------------------------------------+ 
+| Compiler | C Value | CXX Value |
+|----------|---------|-----------|
+| clang | clang | clang++ |
+| MSVC | cl | cl |
+| clang-cl | clang-cl | clang-cl |
+| GNU | gcc | g++ |
 
 ### Additional Note for Windows Users 
 
 If, for some reason, you are compiling through an old version of cmake, you should set up the pointer to the OpenSSL Libraries.
-
--DOPENSSL_MSVC_STATIC_RT=ON 
-      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release 
-    -DOPENSSL_ROOT_DIR="C:/Program Files/OpenSSL-Win64"
-    -DOPENSSL_CRYPTO_LIBRARY="C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libcrypto.lib"
-    -DOPENSSL_SSL_LIBRARY="C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libssl.lib"
 
 ```bash
 cmake -S . -B build -G Ninja -DCMAKE_C_COMPILER={0} -DCMAKE_CXX_COMPILER={1} -DOPENSSL_MSVC_STATIC_RT=ON -DOPENSSL_ROOT-DIR="C:/Program Files/OpenSSL-Win64" -DOPENSSL_CRYPTO_LIBRARY="C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libcrypto.lib" -DOPENSSL_SSL_LIBRARY="C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libssl.lib"
