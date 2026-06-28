@@ -10,5 +10,6 @@ compile_commands.json
 
 request.wki 
 # ugh this is disgusting
-.cache/
 
+.cache/
+# Produce by clangd
