@@ -1,0 +1,57 @@
+# tpedia - A Terminal Wikipedia for TTYs such as Arch and debian. 
+
+A Simple Wikipedia page renderers for teens using Arch and debian TTY (dont judge me, these people are awesome)
+
+tpedia brings Wikipedia articles directly to your TTY, making it easy to browse and search articles without leaving the terminal.
+
+## Usage - 
+
+Since it is a CLI tool, you may start with - 
+
+```bash 
+wpedia # To launch 
+tpedia # same as above
+```
+
+Alternatively, you can search for terms using
+
+```bash 
+tpedia "Soviet Union" 
+```
+to search for specific thing :D 
+
+## Why? 
+
+Modern web browsers are great, but sometimes you just want to read documentation or learn about a topic from a terminal session.
+
+tpedia aims to provide a simple and pleasant Wikipedia experience for TTY users, minimal Linux installations, and remote SSH environments.
+
+## Dependencies
+
+- matjson (lightweight json parsing)
+- notcurses (rendering in temnal)
+- cpp-httplib
+
+## Licensing 
+
+Licensed under the GNU General Public License v3. 
+
+Copyright (C) 2026, Float314 and contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+<img src="https://www.gnu.org/graphics/gplv3-with-text-136x68.png" alt="gnu gpl v3 logo">
+
+> One side note: I would allow and insert wikimedia's Copyright but I 
+> Dont wanna revoke its advertisements clause. But 

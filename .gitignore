@@ -1,0 +1,14 @@
+build/
+
+*.html 
+project_structure.txt
+compile_commands.json
+
+.clang-format
+.clang-tidy 
+.vscode/
+
+request.wki 
+# ugh this is disgusting
+.cache/
+

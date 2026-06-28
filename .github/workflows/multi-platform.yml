@@ -1,0 +1,96 @@
+name: CI
+ 
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+ 
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+ 
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest, macos-latest, ubuntu-latest ]
+ 
+        include:
+          - os: windows-latest
+            preset: windows-release
+            artifact_name: build-windows
+            build_dir: build
+ 
+        
+          - os: macos-latest
+            preset: macos-release
+            artifact_name: build-macos
+            build_dir: build
+ 
+          
+          - os: ubuntu-latest
+            preset: linux-release
+            artifact_name: build-linux
+            build_dir: build
+ 
+    steps:
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+ 
+      
+      - name: Install OpenSSL (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libssl-dev
+ 
+      - name: Install OpenSSL (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install openssl@3
+          # Make find_package(OpenSSL) pick up the Homebrew installation
+          echo "OPENSSL_ROOT_DIR=$(brew --prefix openssl@3)" >> "$GITHUB_ENV"
+ 
+      - name: Install OpenSSL (Windows)
+        if: matrix.os == 'windows-latest'
+        run: choco install openssl --no-progress -y
+ 
+      - name: Set up MSVC dev environment
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+ 
+      # ── Option B ─────────────────────────────────────────────────────────────
+      - name: Configure (plain CMake)
+        run: |
+          cmake -B ${{ matrix.build_dir }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DOPENSSL_ROOT_DIR="${{ env.OPENSSL_ROOT_DIR }}"
+        shell: bash
+ 
+      
+      - name: Build
+        run: cmake --build ${{ matrix.build_dir }} --config Release --parallel
+ 
+      # ── 7. Collect artefacts ─────────────────────────────────────────────────
+      #
+      #  Adjust the `path` glob to match where your compiled binary lands.
+      #  Common patterns:
+      #    build/Release/          (MSVC multi-config)
+      #    build/                  (single-config generators)
+      #
+      - name: Upload build artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          # Grab every executable / library produced under the build tree.
+          # Tighten this glob once you know your exact output paths.
+          path: |
+            ${{ matrix.build_dir }}/Release/
+            ${{ matrix.build_dir }}/tpedia.*
+          if-no-files-found: warn
+          retention-days: 7
+ 
