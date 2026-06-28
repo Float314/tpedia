@@ -59,6 +59,14 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: choco install openssl --no-progress -y
  
+      - name: Install GCC (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install gcc
+          GCC_VER="$(ls "$(brew --prefix)"/bin/gcc-* | head -1 | grep -oE '[0-9]+$')"
+          echo "CC=gcc-${GCC_VER}" >> "$GITHUB_ENV"
+          echo "CXX=g++-${GCC_VER}" >> "$GITHUB_ENV"
+
       - name: Set up MSVC dev environment
         if: matrix.os == 'windows-latest'
         uses: ilammy/msvc-dev-cmd@v1
@@ -74,13 +82,6 @@ jobs:
       
       - name: Build
         run: cmake --build ${{ matrix.build_dir }} --config Release --parallel
- 
-      # ── 7. Collect artefacts ─────────────────────────────────────────────────
-      #
-      #  Adjust the `path` glob to match where your compiled binary lands.
-      #  Common patterns:
-      #    build/Release/          (MSVC multi-config)
-      #    build/                  (single-config generators)
       #
       - name: Upload build artefacts
         uses: actions/upload-artifact@v4
@@ -91,6 +92,7 @@ jobs:
           path: |
             ${{ matrix.build_dir }}/Release/
             ${{ matrix.build_dir }}/tpedia.*
+            ${{ matrix.build_dir }}/tpedia
           if-no-files-found: warn
           retention-days: 7
  
