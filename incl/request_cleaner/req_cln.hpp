@@ -22,6 +22,7 @@
 #include <regex>
 
 std::string stripRefs(const std::string& input);
-std::string stripTemplates(const std::string& input) ;
+std::string stripTemplates(const std::string& input);
 std::string unwrapWikilinks(const std::string& input);
-std::string wikitextToPlain(const std::string& input) ;
+std::string stripComments(const std::string& input);
+std::string wikitextToPlain(const std::string& input);

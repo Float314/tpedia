@@ -1,5 +1,7 @@
 # tpedia - A Terminal Wikipedia for TTYs such as Arch and debian. 
 
+<img src="assets/welcome-screen.png" alt="welcome screen">
+
 A Simple Wikipedia page renderers for teens using Arch and debian TTY (dont judge me, these people are awesome)
 
 tpedia brings Wikipedia articles directly to your TTY, making it easy to browse and search articles without leaving the terminal.
@@ -13,7 +15,7 @@ tpedia
 ```
 
 > \[!TIP]
-> You can rename your binary to wpedia or tpedia. But be careful if it conflicts with another package (Which can but idk)
+> You can rename your binary to wpedia or wikipedia. But be careful if it conflicts with another package (Which can but idk)
 
 ## Why? 
 

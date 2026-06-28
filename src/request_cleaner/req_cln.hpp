@@ -21,43 +21,8 @@
 #include <string>
 #include <regex>
 
-// Remove <ref>...</ref> blocks entirely (this is ugly)
-std::string stripRefs(const std::string& input) {
-    static const std::regex refTag(R"(<ref[^>]*>[\s\S]*?</ref>|<ref[^>]*/>)");
-    return std::regex_replace(input, refTag, "");
-}
-
-// Remove any remaining {{...}} templates 
-std::string stripTemplates(const std::string& input) {
-    std::string result;
-    result.reserve(input.size());
-    size_t i = 0;
-    while (i < input.size()) {
-        if (input[i] == '{' && i + 1 < input.size() && input[i + 1] == '{') {
-            size_t end = input.find("}}", i + 2);
-            if (end != std::string::npos) {
-                i = end + 2;
-                continue;
-            }
-        }
-        result += input[i];
-        ++i;
-    }
-    return result;
-}
-
-// Unwrap [[target|display]] or [[target]] to just the display text
-std::string unwrapWikilinks(const std::string& input) {
-    static const std::regex link(R"(\[\[([^\]|]*)(?:\|([^\]]*))?\]\])");
-    return std::regex_replace(input, link, "$2$1");
-    // note: $2 (display text) wins if present, else falls back to $1 (target)
-}
-
-
-std::string wikitextToPlain(const std::string& input) {
-    std::string s = input;
-    s = stripRefs(s);
-    s = stripTemplates(s);
-    s = unwrapWikilinks(s);
-    return s;
-}
+std::string stripRefs(const std::string& input);
+std::string stripTemplates(const std::string& input);
+std::string unwrapWikilinks(const std::string& input);
+std::string stripComments(const std::string& input);
+std::string wikitextToPlain(const std::string& input);
