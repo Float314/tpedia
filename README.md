@@ -7,18 +7,13 @@ tpedia brings Wikipedia articles directly to your TTY, making it easy to browse 
 ## Usage - 
 
 Since it is a CLI tool, you may start with - 
-
-```bash 
-wpedia # To launch 
-tpedia # same as above
+type this in your terminal - 
+```bash
+tpedia
+# Rename your binaries - 
+wpedia
+wikipedia
 ```
-
-Alternatively, you can search for terms using
-
-```bash 
-tpedia "Soviet Union" 
-```
-to search for specific thing :D 
 
 ## Why? 
 
@@ -29,7 +24,7 @@ tpedia aims to provide a simple and pleasant Wikipedia experience for TTY users,
 ## Dependencies
 
 - matjson (lightweight json parsing)
-- notcurses (rendering in temnal)
+- FTXUI (rendering in terminal)
 - cpp-httplib
 
 ## Licensing 
