@@ -1,3 +1,4 @@
+/* Application to manage screens */
 /*
     tpedia
     Copyright (C) 2026, Float314

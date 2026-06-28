@@ -30,6 +30,6 @@ While im yet to make public my email, if you are from the Wikimedia foundation a
 
 All Licenses (of libraries) can be found in the LICENSES/ Folder of this directory (docs/). Though if this documentation is provided stndalone, please go to the docs/LICENSES/ folder to see Licenses. 
 
-If any legal issues persists (like incompatible licenses), please contact me through discord <@float_3.14159>. (though it should be noted that all the licenses provided are compatible with GPL)
+If any legal issues persists (like incompatible licenses), please contact me through discord <@float_3.14159>. (though it should be noted that all the licenses provided are GPL Compatible)
 
 Thank you!

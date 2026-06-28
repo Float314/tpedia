@@ -1,3 +1,5 @@
+/* About screen */
+
 /*
     tpedia
     Copyright (C) 2026, Float314

@@ -1,8 +1,7 @@
-/* variables for logos. Yo are wish to use these logos for your projects
-   if this api is useful for you. 
+/* variables for logos. You are free to use these logos, under certain conditions -  
    
    Conditions to use these logos - 
-   1. They follow the same redistirbutable material rules as GNU GPL And CC-BY4.0
+   1. They follow the same redistirbutable material rules as GNU GPL
    2. You MUST NOT CLAIM that you wrote the original art. 
    3. You should give proper credits to author. 
    4. Just follow the rules cmon man its not even hard
@@ -29,6 +28,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+#pragma once
 #include <iostream>
 
 namespace tpedia_logos {
