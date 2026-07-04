@@ -27,6 +27,7 @@ private:
     ftxui::Component input;
     ftxui::Component body;
     std::function<void(std::string)> on_search;
+    std::string query_progress;
 public:
     homepage();
     ftxui::Component MainBodyComponent() override;

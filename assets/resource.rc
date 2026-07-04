@@ -1,0 +1,34 @@
+#ifndef APSTUDIO_INVOKED
+#pragma code_page(65001)
+#endif
+
+IDI_ICON1           ICON                "icon.ico"
+
+IDR_LICENSE         TEXT                "../LICENSE"
+
+1 VERSIONINFO
+FILEVERSION         1,0,0,0
+PRODUCTVERSION      1,0,0,0
+FILEFLAGSMASK       0x3fL
+FILEFLAGS           0x0L
+FILESUBTYPE         0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",        "Float314"
+            VALUE "FileDescription",    "Tpedia - The perfect Encyclopedia for your terminal"
+            VALUE "FileVersion",        "1.0.0.0"
+            VALUE "InternalName",       "tpedia.exe"
+            VALUE "LegalCopyright",     "Copyright (C) 2026, Float314. Licensed under GNU GPL v3"
+            VALUE "OriginalFilename",   "tpedia.exe"
+            VALUE "ProductName",        "Tpedia"
+            VALUE "ProductVersion",     "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04B0
+    END
+END

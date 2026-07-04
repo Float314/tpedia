@@ -28,6 +28,7 @@ homepage::homepage() {
 
     auto vertical = ftxui::Container::Vertical({input});
 
+
     body = ftxui::Renderer(vertical, [&] {
         return ftxui::vbox({
             ftxui::filler(),
@@ -38,7 +39,7 @@ homepage::homepage() {
             ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
             ftxui::filler(),
             ftxui::separator(),
-            ftxui::text(tpedia_logos::legal_copyrights) | ftxui::color(ftxui::Color::GrayDark),
+            ftxui::text(tpedia_logos::legal_copyrights)
         }) | ftxui::flex;
     });
 
@@ -46,6 +47,7 @@ homepage::homepage() {
         if (event == ftxui::Event::Return && !search_query.empty()) {
             if (on_search) {
                 on_search(search_query);
+                query_progress = "This may take a while. Please wait!";
             }
             return true;
         }

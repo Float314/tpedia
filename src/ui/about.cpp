@@ -68,7 +68,8 @@ code (<https://github.com/Float314/tpedia>).
             ftxui::text("About tpedia") | ftxui::bold | ftxui::center | ftxui::color(ftxui::Color::IndianRed1Bis),
             ftxui::paragraph(text) | ftxui::center,
             ftxui::filler(),
-            ftxui::text("Thank you!") | ftxui::center | ftxui::color(ftxui::Color::Red3),
+            ftxui::text("Thank you!") | ftxui::center | ftxui::color(ftxui::Color::Red3Bis),
+            ftxui::filler()
         }) | ftxui::flex;
     });
 }
