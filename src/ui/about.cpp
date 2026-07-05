@@ -22,6 +22,8 @@
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
 
+// let this file stay messy as is
+
 about::about() {
     text =R"md(
 tpedia - Wikipedia (Terminal mode!)

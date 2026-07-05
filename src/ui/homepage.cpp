@@ -23,42 +23,50 @@
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/component/event.hpp>
 
-homepage::homepage() {
-    input = ftxui::Input(&search_query, "Search Wikipedia...");
+class homepage : public main_screen {
+private:
+    std::string search_query;
+    ftxui::Component input;
+    ftxui::Component body;
+    std::function<void(std::string)> on_search;
+    std::string query_progress;
+public:
+    homepage() {
+        input = ftxui::Input(&search_query, "Search Wikipedia...");
 
-    auto vertical = ftxui::Container::Vertical({input});
+        auto vertical = ftxui::Container::Vertical({input});
 
+        body = ftxui::Renderer(vertical, [&] {
+            return ftxui::vbox({
+                ftxui::filler(),
+                ftxui::text(tpedia_logos::standard_with_slogan) | ftxui::center,
+                ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
+                ftxui::text("Enter a search term to begin.") | ftxui::center | ftxui::bold,
+                input->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 25) | ftxui::center,
+                ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
+                ftxui::filler(),
+                ftxui::separator(),
+                ftxui::text(tpedia_logos::legal_copyrights)
+            }) | ftxui::flex;
+        });
 
-    body = ftxui::Renderer(vertical, [&] {
-        return ftxui::vbox({
-            ftxui::filler(),
-            ftxui::text(tpedia_logos::standard_with_slogan) | ftxui::center,
-            ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
-            ftxui::text("Enter a search term to begin.") | ftxui::center | ftxui::bold,
-            input->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 25) | ftxui::center,
-            ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
-            ftxui::filler(),
-            ftxui::separator(),
-            ftxui::text(tpedia_logos::legal_copyrights)
-        }) | ftxui::flex;
-    });
-
-    body = ftxui::CatchEvent(body, [this](ftxui::Event event) {
-        if (event == ftxui::Event::Return && !search_query.empty()) {
-            if (on_search) {
-                on_search(search_query);
-                query_progress = "This may take a while. Please wait!";
+        body = ftxui::CatchEvent(body, [this](ftxui::Event event) {
+            if (event == ftxui::Event::Return && !search_query.empty()) {
+                if (on_search) {
+                    on_search(search_query);
+                    query_progress = "This may take a while. Please wait!";
+                }
+                return true;
             }
-            return true;
-        }
-        return false;
-    });
-}
+            return false;
+        });
+    };
 
-ftxui::Component homepage::MainBodyComponent() {
-    return body;
-}
+    ftxui::Component MainBodyComponent() override {
+        return body;
+    };
 
-void homepage::set_on_search(std::function<void(std::string)> cb) {
-    on_search = std::move(cb);
-}
+    void set_on_search(std::function<void(std::string)> cb) {
+        on_search = std::move(cb);
+    };
+};
