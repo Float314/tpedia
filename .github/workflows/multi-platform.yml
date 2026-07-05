@@ -75,7 +75,8 @@ jobs:
         run: |
           cmake -B ${{ matrix.build_dir }} \
                 -DCMAKE_BUILD_TYPE=Release \
-                -DOPENSSL_ROOT_DIR="${{ env.OPENSSL_ROOT_DIR }}"
+                -DOPENSSL_ROOT_DIR="${{ env.OPENSSL_ROOT_DIR }}" \
+                -DCMAKE_UNITY_BUILD=ON
         shell: bash
  
       
