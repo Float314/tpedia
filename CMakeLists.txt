@@ -79,9 +79,11 @@ set(SOURCES
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-if(WIN32 AND msvc) # Limit assets embeding to msvc only 
+
+if(WIN32 AND MSVC) # Limit assets embeding to msvc only 
     target_sources(${PROJECT_NAME} PRIVATE assets/resource.rc)
 endif()
+
 target_compile_definitions(${PROJECT_NAME} PRIVATE 
     CPP_HTTPLIB_OPENSSL_SUPPORT
 )
