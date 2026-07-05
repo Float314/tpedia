@@ -28,7 +28,7 @@ homepage::homepage() {
     auto vertical = ftxui::Container::Vertical({input});
 
     body = ftxui::Renderer(vertical, [&] {
-        return ftxui::vbox({
+        auto base = ftxui::vbox({
             ftxui::filler(),
             ftxui::text(tpedia_logos::standard_with_slogan) | ftxui::center,
             ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
@@ -39,13 +39,23 @@ homepage::homepage() {
             ftxui::separator(),
             ftxui::text(tpedia_logos::legal_copyrights)
         }) | ftxui::flex;
+
+        if (!query_progress.empty()) {
+            base = ftxui::dbox({
+                base,
+                ftxui::text(query_progress) | ftxui::center | ftxui::bold
+                    | ftxui::color(ftxui::Color::Yellow) | ftxui::border | ftxui::clear_under | ftxui::center,
+            });
+        }
+
+        return base;
     });
 
     body = ftxui::CatchEvent(body, [this](ftxui::Event event) {
         if (event == ftxui::Event::Return && !search_query.empty()) {
             if (on_search) {
+                query_progress = "This may take a few moments...";
                 on_search(search_query);
-                query_progress = "This may take a while. Please wait!";
             }
             return true;
         }
@@ -55,6 +65,10 @@ homepage::homepage() {
 
 ftxui::Component homepage::MainBodyComponent() {
     return body;
+}
+
+void homepage::clear_progress() {
+    query_progress = "";
 }
 
 void homepage::set_on_search(std::function<void(std::string)> cb) {

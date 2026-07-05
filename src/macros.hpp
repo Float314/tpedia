@@ -30,6 +30,7 @@
 */
 #pragma once
 #include <iostream>
+#include <string>
 
 namespace tpedia_logos {
 

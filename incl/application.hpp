@@ -24,6 +24,10 @@
 #include "ui/wiki_text.hpp"
 #include "api/wikipedia_client.hpp"
 #include <memory>
+#include <thread>
+#include <atomic>
+#include <mutex>
+#include <vector>
 
 class application {
 public:
@@ -47,12 +51,25 @@ private:
 
     ftxui::Component body_container;
     ftxui::Component main_layout;
+    ftxui::Component event_handler;
     Page current_page;
 
+    std::mutex wiki_mutex;
+    std::atomic<bool> async_search_ready{false};
+    std::vector<search_result_item> async_search_results;
+    std::string async_search_query;
+    std::atomic<int> search_gen{0};
+
+    std::atomic<bool> async_article_ready{false};
+    std::string async_article_title;
+    std::string async_article_content;
+
     ftxui::Component wrap_with_maybe(ftxui::Component comp, Page page);
+    void handle_async_completions();
 
 public:
     application();
+    ~application();
     void run();
     void switch_to(Page page);
     void search_query(const std::string& query);

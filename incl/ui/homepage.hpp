@@ -32,4 +32,5 @@ public:
     homepage();
     ftxui::Component MainBodyComponent() override;
     void set_on_search(std::function<void(std::string)> cb);
+    void clear_progress();
 };

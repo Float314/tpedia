@@ -34,9 +34,23 @@ search_results::search_results() : selected(0) {
             }) | ftxui::flex;
         }),
     });
+
+    wrapper = ftxui::Renderer(body, [this] {
+        auto base = body->Render() | ftxui::flex;
+
+        if (!loading_message.empty()) {
+            base = ftxui::dbox({
+                base,
+                ftxui::text(loading_message) | ftxui::center | ftxui::bold
+                    | ftxui::color(ftxui::Color::Yellow) | ftxui::border | ftxui::clear_under | ftxui::center,
+            });
+        }
+
+        return base;
+    });
 }
 
-ftxui::Component search_results::MainBodyComponent() { return body; }
+ftxui::Component search_results::MainBodyComponent() { return wrapper; }
 
 void search_results::rebuild_list() {
     row_comps.clear();
@@ -61,6 +75,7 @@ void search_results::rebuild_list() {
 
         rc.go_button = ftxui::Button(" Go to this Page ", [this, i] {
             if (on_open_article && i < results.size()) {
+                loading_message = "This may take a few moments...";
                 on_open_article(results[i].title);
             }
         });
@@ -103,6 +118,7 @@ void search_results::rebuild_list() {
     body->Add(ftxui::CatchEvent(content, [this](ftxui::Event event) {
         if (event == ftxui::Event::Return && !results.empty()) {
             if (on_open_article) {
+                loading_message = "This may take a few moments...";
                 on_open_article(results[selected].title);
             }
             return true;
@@ -126,7 +142,12 @@ void search_results::rebuild_list() {
 void search_results::set_results(const std::vector<search_result_item>& items) {
     results = items;
     selected = 0;
+    loading_message = "";
     rebuild_list();
+}
+
+void search_results::clear_loading() {
+    loading_message = "";
 }
 
 void search_results::set_on_open_article(std::function<void(std::string)> cb) {

@@ -30,4 +30,5 @@ public:
     wiki_text();
     ftxui::Component MainBodyComponent() override;
     void load_page(const std::string& title);
+    void set_content(const std::string& title, const std::string& content);
 };

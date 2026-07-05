@@ -28,6 +28,9 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Exports command for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # ------------ CPM -----------------------------------------------
 if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake")
     message("-- Downloading CPM v0.42.3")

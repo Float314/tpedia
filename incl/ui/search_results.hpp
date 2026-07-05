@@ -28,8 +28,10 @@ class search_results : public main_screen {
 private:
     std::vector<search_result_item> results;
     ftxui::Component body;
+    ftxui::Component wrapper;
     std::function<void(std::string)> on_open_article;
     int selected;
+    std::string loading_message;
 
     struct row_components {
         ftxui::Component go_button;
@@ -43,4 +45,5 @@ public:
     ftxui::Component MainBodyComponent() override;
     void set_results(const std::vector<search_result_item>& items);
     void set_on_open_article(std::function<void(std::string)> cb);
+    void clear_loading();
 };

@@ -54,3 +54,8 @@ void wiki_text::load_page(const std::string& title) {
     }
     text = wikitextToPlain(result.content);
 }
+
+void wiki_text::set_content(const std::string& title, const std::string& content) {
+    page_title = title;
+    text = content;
+}
