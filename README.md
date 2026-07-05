@@ -1,33 +1,35 @@
-# tpedia - A Terminal Wikipedia for TTYs such as Arch and debian. 
+<div align="center">
+  <h1>tpedia — Wikipedia In Your Terminal</h1>
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/float314/tpedia/multi-platform.yml)
-![GitHub License](https://img.shields.io/github/license/float314/tpedia)
-![GitHub Release](https://img.shields.io/github/v/release/float314/tpedia)
-![GitHub Tag](https://img.shields.io/github/v/tag/float314/tpedia)
+  <img src="https://img.shields.io/github/actions/workflow/status/float314/tpedia/multi-platform.yml" alt="GitHub Actions Workflow Status">
+  <img src="https://img.shields.io/github/license/float314/tpedia" alt="GitHub License">
+  <img src="https://img.shields.io/github/v/release/float314/tpedia" alt="GitHub Release">
+  <img src="https://img.shields.io/github/v/tag/float314/tpedia" alt="GitHub Tag">
+</div><br>
 
+<details>
+  <summary>
+    <b>View preview image</b>
+  </summary>
 
-<img src="assets/welcome-screen.png" alt="welcome screen">
+  <br><img src="assets/welcome-screen.png" alt="welcome screen" width="800" height="800">
+</details>
 
-A Simple Wikipedia page renderers for teens using Arch and debian TTY (dont judge me, these people are awesome)
+tpedia brings Wikipedia articles directly to your terminal emulator, making it extremely easy to browse and find information.
 
-tpedia brings Wikipedia articles directly to your TTY, making it easy to browse and search articles without leaving the terminal.
+## Usage 
 
-## Usage - 
+Since it is a CLI tool, access tpedia via the command.
 
-Since it is a CLI tool, you may start with - 
-type this in your terminal - 
 ```bash
 tpedia
 ```
-
-> \[!TIP]
-> You can rename your binary to wpedia or wikipedia. But be careful if it conflicts with another package (Which can but idk)
 
 ## Why? 
 
 Modern web browsers are great, but sometimes you just want to read documentation or learn about a topic from a terminal session.
 
-tpedia aims to provide a simple and pleasant Wikipedia experience for TTY users, minimal Linux installations, and remote SSH environments.
+tpedia aims to provide a simple and pleasant Wikipedia experience for terminal users, minimal Linux installations, and remote SSH environments.
 
 ## Dependencies
 
@@ -57,4 +59,3 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 <img src="https://www.gnu.org/graphics/gplv3-with-text-136x68.png" alt="gnu gpl v3 logo">
-
