@@ -1,16 +1,5 @@
-/* variables for logos. You are free to use these logos, under certain
-   conditions -
-
-   Conditions to use these logos -
-   1. They follow the same redistirbutable material rules as GNU GPL
-   2. You MUST NOT CLAIM that you wrote the original art.
-   3. You should give proper credits to author.
-   4. Just follow the rules cmon man its not even hard
-
-
-   Material produced by - https://patorjk.com/software/taag (patorjk's text to
-   ascii converter).
-*/
+/*
+ * Logos For tpedia. Follow standard copyright rules (idk) */
 
 /*
     tpedia
