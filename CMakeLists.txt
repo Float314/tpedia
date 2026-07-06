@@ -64,8 +64,8 @@ endif()
 CPMAddPackage("gh:geode-sdk/json@3.3.0")
 CPMAddPackage("gh:ArthurSonzogni/FTXUI@7.0.0")
 
-# --------------------- O-puhh-nSSL --------------------------------------
-
+# --------------------- OpennSSL --------------------------------------
+# or as i call it - O-puhh-n SSL
 find_package(OpenSSL REQUIRED)
 
 set(SOURCES
@@ -83,7 +83,9 @@ set(SOURCES
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-if(WIN32 AND MSVC) # Limit assets embeding to msvc only 
+if(WIN32 AND MSVC) # Limit assets embeding to msvc compilers only
+    # such as clang-cl and MSVC (there exists no compiler of msvc flags
+    # in the market except these two. Clang-cl is peak tho)
     target_sources(${PROJECT_NAME} PRIVATE assets/resource.rc)
 endif()
 

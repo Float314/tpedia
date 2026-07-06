@@ -1,19 +1,20 @@
-/* variables for logos. You are free to use these logos, under certain conditions -  
-   
-   Conditions to use these logos - 
+/* variables for logos. You are free to use these logos, under certain
+   conditions -
+
+   Conditions to use these logos -
    1. They follow the same redistirbutable material rules as GNU GPL
-   2. You MUST NOT CLAIM that you wrote the original art. 
-   3. You should give proper credits to author. 
+   2. You MUST NOT CLAIM that you wrote the original art.
+   3. You should give proper credits to author.
    4. Just follow the rules cmon man its not even hard
 
 
-   Material produced by - https://patorjk.com/software/taag (patorjk's text to ascii 
-   converter).    
+   Material produced by - https://patorjk.com/software/taag (patorjk's text to
+   ascii converter).
 */
 
 /*
     tpedia
-    Copyright (C) 2026, Float314 
+    Copyright (C) 2026, Float314
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +35,7 @@
 
 namespace tpedia_logos {
 
-    std::string standard = R"md(
+std::string standard = R"md(
                                                      _______                     
         _________   _...._            __.....__    \  ___ `'.   .--.           
         \        |.'      '-.     .-''         '.   ' |--.\  \  |__|           
@@ -50,7 +51,7 @@ namespace tpedia_logos {
 
 )md";
 
-      std::string logo2 = R"md(
+std::string logo2 = R"md(
    ░██                                 ░██ ░██           
    ░██                                 ░██               
 ░████████ ░████████   ░███████   ░████████ ░██ ░██████   
@@ -63,7 +64,7 @@ namespace tpedia_logos {
                                                          
       )md";
 
-    std::string slogan = R"md(
+std::string slogan = R"md(
 ╶┬╴╷ ╷╭─╴   ╭─╮╭─╴╭─╮╭─╴╭─╴╭─╴╶┬╴   ╭─╴╭╮╷╭─╴╷ ╷╭─╴╷  ╭─╮╭─╮╭─╴╶┬╮╷╭─╮
  │ ├─┤├╴    ├─╯├╴ ├┬╯├╴ ├╴ │   │    ├╴ │╰┤│  ╰┬╯│  │  │ │├─╯├╴  │││├─┤
  ╵ ╵ ╵╰─╴   ╵  ╰─╴╵╰╴╵  ╰─╴╰─╴ ╵    ╰─╴╵ ╵╰─╴ ╵ ╰─╴╰─╴╰─╯╵  ╰─╴╶┴╯╵╵ ╵
@@ -73,11 +74,14 @@ namespace tpedia_logos {
     
     )md";
 
-    std::string legal_copyrights = R"md(
+std::string legal_copyrights = R"md(
     tpedia - Copyright (C) 2026, Float314. Click on "About" For more details.
     Licensed under the GNU GPL. Powered by the Wikimedia Foundation.
     )md";
 
-    std::string standard_with_slogan = standard + slogan;
-    std::string st_slog_copyright = standard + slogan + legal_copyrights;
-}
+std::string standard_with_slogan = standard + slogan;
+std::string st_slog_copyright = standard + slogan + legal_copyrights;
+
+int *example_neovim_config =
+    nullptr; // this doesnt does anything, its for checking the LSP for nvim
+} // namespace tpedia_logos
