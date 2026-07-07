@@ -24,7 +24,7 @@ BEGIN
             VALUE "LegalCopyright",     "Copyright (C) 2026, Float314. Licensed under GNU GPL v3"
             VALUE "OriginalFilename",   "tpedia.exe"
             VALUE "ProductName",        "Tpedia"
-            VALUE "ProductVersion",     "1.0.0.0"
+            VALUE "ProductVersion",     "1.1.0.0"
         END
     END
     BLOCK "VarFileInfo"

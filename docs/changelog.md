@@ -4,7 +4,7 @@
 > [!NOTE]
 > Starting from v1.0.1-alpha-1. This would not track changes before v1.0.0 and its beta releases. 
 
-# v1.0.1-alpha-1 
+# v1.1.0-alpha-1 
 
 - Added a "Please wait for a few mooments" Screen. 
 - Removed dependencies - matjson (hence geode-sdk/result)
