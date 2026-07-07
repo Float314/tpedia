@@ -20,7 +20,7 @@
 #include "api/wikipedia_client.hpp"
 #include <httplib.h>
 #include <format>
-#include <matjson.hpp>
+#include <nlohmann/json.hpp>
 #include <cstdio>
 #include <string>
 
@@ -46,9 +46,9 @@ rawrequest_result wikipedia_client::rawrequest(const std::string& thedamnpage) {
         return {"", html_res->status, msg};
     }
 
-    auto json_payload = matjson::Value::object();
-    json_payload.set("html", html_res->body);
-    json_payload.set("scrub_wikitext", true);
+    auto json_payload = nlohmann::json::object();
+    json_payload["html"] = html_res->body;
+    json_payload["scrub_wikitext"] = true;
 
     auto wiki_res = cli.Post("/w/rest.php/v1/transform/html/to/wikitext", json_payload.dump(), "application/json");
     if (!wiki_res) {
@@ -96,22 +96,23 @@ std::vector<search_result_item> wikipedia_client::search_pages(const std::string
     }
 
     std::string json_raw = req->body;
-    auto parse = matjson::parse(json_raw);
-    if (!parse) {
-        std::string msg = "JSON parse error [search_pages]: " + parse.err()->message;
+    nlohmann::json root;
+    try {
+        root = nlohmann::json::parse(json_raw);
+    } catch (const nlohmann::json::parse_error& e) {
+        std::string msg = "JSON parse error [search_pages]: " + std::string(e.what());
         std::fprintf(stderr, "%s\n", msg.c_str());
         return results;
     }
 
-    auto root = parse.unwrap();
     auto pages = root["pages"];
-    if (!pages.isArray()) {
+    if (!pages.is_array()) {
         return results;
     }
 
     for (auto& page : pages) {
-        auto title = page["title"].as<std::string>().unwrapOr("");
-        auto excerpt = page["excerpt"].as<std::string>().unwrapOr("");
+        auto title = page.value("title", std::string(""));
+        auto excerpt = page.value("excerpt", std::string(""));
         results.push_back({title, excerpt});
     }
 

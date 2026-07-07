@@ -33,7 +33,7 @@ tpedia aims to provide a simple and pleasant Wikipedia experience for terminal u
 
 ## Dependencies
 
-- matjson (lightweight json parsing)
+- nlohmann/json (JSON parsing)
 - FTXUI (rendering in terminal)
 - cpp-httplib
 

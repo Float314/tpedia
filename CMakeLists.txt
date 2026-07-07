@@ -61,7 +61,7 @@ else()
 endif()
 
 # --------------------- Libraries + more ------------------------------------
-CPMAddPackage("gh:geode-sdk/json@3.3.0")
+CPMAddPackage("gh:nlohmann/json@3.11.3")
 CPMAddPackage("gh:ArthurSonzogni/FTXUI@7.0.0")
 
 # --------------------- OpennSSL --------------------------------------
@@ -100,7 +100,7 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    mat-json
+    nlohmann_json::nlohmann_json
     ftxui::ftxui
     OpenSSL::SSL
     OpenSSL::Crypto

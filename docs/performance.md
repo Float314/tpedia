@@ -16,7 +16,7 @@ The reason this is happening because programs can suck. Even something as the WI
 
 As the reason to tpedia, just understand by this short rough graph - 
 
-User searches for smth -> Client sends GET Request to the server -> The server respond with a JSON -> matjson and FTXUI to parse the JSON 
+User searches for smth -> Client sends GET Request to the server -> The server respond with a JSON -> nlohmann/json and FTXUI to parse the JSON 
 
 Now if a user clicks on article (this is a process with much length), the following steps are involved - 
 

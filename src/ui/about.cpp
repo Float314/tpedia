@@ -47,10 +47,7 @@ This program also uses Wikimedia API and the MediaWiki API for
 searches and results.
 
 Libraries - 
-- matjson (github: geode-sdk/json) [JSON Parsing] Under Boost Software 
-  License v1.0
-- result (github: geode-sdk/result) [Dependency of MATJson] Under Boost
-  Software License v1.0
+- nlohmann/json (github: nlohmann/json) [JSON Parsing] Under MIT License
 - FTXUI (github: ArthurSonzogni/FTXUI) [Terminal IO Handling, is a VERY 
   Great Library] Under MIT License
 - cpp-httplib (github: yhirose/cpp-httplib) [Great Library for HTTPS 
