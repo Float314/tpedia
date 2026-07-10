@@ -17,31 +17,25 @@
 */
 #pragma once
 
-#define CPPHTTPLIB_OPENSSL_SUPPORT
-#include <httplib.h>
-#include <format>
 #include <string>
-#include <vector>
 
-struct search_result_item {
-    std::string title;
-    std::string snippet;
-};
+class settings_manager {
+public:
+    settings_manager();
 
-struct rawrequest_result {
-    std::string content;
-    int http_status = 0;
-    std::string error_message;
-};
+    std::string get_lang_code() const;
+    int get_search_limit() const;
 
-class wikipedia_client {
-    private:
-        std::string query;
-        std::string wikipedia_server;
-        std::string lang_code;
-        httplib::SSLClient cli;
-    public:
-        wikipedia_client(const std::string& lang_code = "en");
-        rawrequest_result rawrequest(const std::string& page_title);
-        std::vector<search_result_item> search_pages(const std::string& query, int limit = 10);
+    void set_lang_code(const std::string& code);
+    void set_search_limit(int limit);
+
+    void load();
+    void save();
+
+private:
+    std::string get_config_dir() const;
+    std::string get_config_path() const;
+
+    std::string lang_code = "en";
+    int search_limit = 10;
 };

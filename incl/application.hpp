@@ -23,6 +23,7 @@
 #include "ui/about.hpp"
 #include "ui/wiki_text.hpp"
 #include "api/wikipedia_client.hpp"
+#include "settings_manager.hpp"
 #include <memory>
 #include <thread>
 #include <atomic>
@@ -36,6 +37,7 @@ public:
 private:
     ftxui::ScreenInteractive screen;
 
+    settings_manager settings;
     header header_bar;
     wikipedia_client wiki_client;
 

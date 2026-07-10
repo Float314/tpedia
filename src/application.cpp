@@ -32,6 +32,7 @@ ftxui::Component application::wrap_with_maybe(ftxui::Component comp, Page page) 
 
 application::application()
     : screen(ftxui::ScreenInteractive::Fullscreen()),
+      wiki_client(settings.get_lang_code()),
       current_page(Page::Home)
 {
     home_page = std::make_unique<homepage>();
@@ -131,7 +132,7 @@ void application::search_query(const std::string& query) {
         std::vector<search_result_item> results;
         {
             std::lock_guard<std::mutex> lock(wiki_mutex);
-            results = wiki_client.search_pages(query);
+            results = wiki_client.search_pages(query, settings.get_search_limit());
         }
 
         if (gen != search_gen.load()) {

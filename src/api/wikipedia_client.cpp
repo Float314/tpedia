@@ -24,8 +24,14 @@
 #include <cstdio>
 #include <string>
 
-rawrequest_result wikipedia_client::rawrequest(const std::string& thedamnpage) {
-    std::string encoded = thedamnpage;
+wikipedia_client::wikipedia_client(const std::string& code)
+    : lang_code(code),
+      wikipedia_server(code + ".wikipedia.org"),
+      cli(wikipedia_server.c_str())
+{}
+
+rawrequest_result wikipedia_client::rawrequest(const std::string& page_title) {
+    std::string encoded = page_title;
     size_t pos = 0;
     while ((pos = encoded.find(' ', pos)) != std::string::npos) {
         encoded.replace(pos, 1, "_");
@@ -66,7 +72,7 @@ rawrequest_result wikipedia_client::rawrequest(const std::string& thedamnpage) {
 
     auto content = wiki_res->body;
     if (content.empty()) {
-        std::string msg = "Empty wikitext returned for page: " + thedamnpage;
+        std::string msg = "Empty wikitext returned for page: " + page_title;
         std::fprintf(stderr, "%s\n", msg.c_str());
         return {"", 200, msg};
     }
@@ -81,11 +87,12 @@ std::vector<search_result_item> wikipedia_client::search_pages(const std::string
     params.emplace("q", query);
     params.emplace("limit", std::to_string(limit));
 
-    auto req = cli.Get("/w/rest.php/v1/search/page", params, httplib::Headers());
+    auto req_fmt = std::format("/w/rest.php/{0}/search/page", "v1");
+    auto req = cli.Get(req_fmt, params, httplib::Headers());
     if (!req) {
         auto err = req.error();
         std::string msg = std::format("HTTP Error [search_pages]: {}", static_cast<int>(err));
-        std::fprintf(stderr, "%s\n", msg.c_str());
+        std::cerr << "error occured! " << msg.c_str() << std::endl;
         return results;
     }
 

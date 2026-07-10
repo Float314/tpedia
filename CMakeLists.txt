@@ -71,6 +71,7 @@ find_package(OpenSSL REQUIRED)
 set(SOURCES
     src/main.cpp
     src/application.cpp
+    src/settings_manager.cpp
     src/ui/header.cpp
     src/ui/homepage.cpp
     src/ui/search_results.cpp
