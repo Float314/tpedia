@@ -19,7 +19,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName",        "Float314"
             VALUE "FileDescription",    "Tpedia - The perfect Encyclopedia for your terminal"
-            VALUE "FileVersion",        "1.0.0.0"
+            VALUE "FileVersion",        "1.1.0.0"
             VALUE "InternalName",       "tpedia.exe"
             VALUE "LegalCopyright",     "Copyright (C) 2026, Float314. Licensed under GNU GPL v3"
             VALUE "OriginalFilename",   "tpedia.exe"

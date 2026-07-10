@@ -37,7 +37,7 @@ tpedia aims to provide a simple and pleasant Wikipedia experience for terminal u
 - FTXUI (rendering in terminal)
 - cpp-httplib
 
-+ more
+\+ more
 
 ## Licensing 
 
