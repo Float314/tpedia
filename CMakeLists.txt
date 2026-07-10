@@ -76,6 +76,7 @@ set(SOURCES
     src/ui/homepage.cpp
     src/ui/search_results.cpp
     src/ui/about.cpp
+    src/ui/settings.cpp
     src/ui/wiki_text.cpp
     src/ui/scrollbar.cpp
     src/api/wikipedia_client.cpp

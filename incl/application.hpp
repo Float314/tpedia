@@ -20,6 +20,7 @@
 #include "ui/header.hpp"
 #include "ui/homepage.hpp"
 #include "ui/search_results.hpp"
+#include "ui/settings.hpp"
 #include "ui/about.hpp"
 #include "ui/wiki_text.hpp"
 #include "api/wikipedia_client.hpp"
@@ -32,7 +33,7 @@
 
 class application {
 public:
-    enum class Page { Home, Search, About, Article };
+    enum class Page { Home, Search, Settings, About, Article };
 
 private:
     ftxui::ScreenInteractive screen;
@@ -43,11 +44,13 @@ private:
 
     std::unique_ptr<homepage> home_page;
     std::unique_ptr<search_results> search_page;
+    std::unique_ptr<settings_screen> settings_page;
     std::unique_ptr<about> about_page;
     std::unique_ptr<wiki_text> article_page;
 
     ftxui::Component home_comp;
     ftxui::Component search_comp;
+    ftxui::Component settings_comp;
     ftxui::Component about_comp;
     ftxui::Component article_comp;
 
@@ -55,6 +58,7 @@ private:
     ftxui::Component main_layout;
     ftxui::Component event_handler;
     Page current_page;
+    Page previous_page;
 
     std::mutex wiki_mutex;
     std::atomic<bool> async_search_ready{false};

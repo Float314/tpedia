@@ -43,12 +43,12 @@ class header {
 private:
     ftxui::Component home_btn;
     ftxui::Component search_btn;
-    ftxui::Component about_btn;
+    ftxui::Component settings_btn;
     ftxui::Component close_btn;
     ftxui::Component layout;
     std::function<void()> on_home;
     std::function<void()> on_search;
-    std::function<void()> on_about;
+    std::function<void()> on_settings;
     std::function<void()> on_close;
     std::string title_text;
 public:
@@ -56,7 +56,7 @@ public:
 
     void set_on_home(std::function<void()> cb);
     void set_on_search(std::function<void()> cb);
-    void set_on_about(std::function<void()> cb);
+    void set_on_settings(std::function<void()> cb);
     void set_on_close(std::function<void()> cb);
     void set_title(const std::string& t);
 

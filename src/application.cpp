@@ -33,22 +33,34 @@ ftxui::Component application::wrap_with_maybe(ftxui::Component comp, Page page) 
 application::application()
     : screen(ftxui::ScreenInteractive::Fullscreen()),
       wiki_client(settings.get_lang_code()),
-      current_page(Page::Home)
+      current_page(Page::Home),
+      previous_page(Page::Home)
 {
     home_page = std::make_unique<homepage>();
     search_page = std::make_unique<search_results>();
+    settings_page = std::make_unique<settings_screen>(settings);
     about_page = std::make_unique<about>();
     article_page = std::make_unique<wiki_text>();
 
     home_comp = home_page->MainBodyComponent();
     search_comp = search_page->MainBodyComponent();
+    settings_comp = settings_page->MainBodyComponent();
     about_comp = about_page->MainBodyComponent();
     article_comp = article_page->MainBodyComponent();
 
     header_bar.set_on_home([this] { switch_to(Page::Home); });
     header_bar.set_on_search([this] { switch_to(Page::Search); });
-    header_bar.set_on_about([this] { switch_to(Page::About); });
+    header_bar.set_on_settings([this] { switch_to(Page::Settings); });
     header_bar.set_on_close([this] { screen.Exit(); });
+
+    settings_page->set_on_about([this] {
+        previous_page = Page::Settings;
+        switch_to(Page::About);
+    });
+
+    about_page->set_on_back([this] {
+        switch_to(previous_page);
+    });
 
     home_page->set_on_search([this](const std::string& query) {
         search_query(query);
@@ -88,6 +100,7 @@ application::application()
     body_container = ftxui::Container::Vertical({
         wrap_with_maybe(home_comp, Page::Home),
         wrap_with_maybe(search_comp, Page::Search),
+        wrap_with_maybe(settings_comp, Page::Settings),
         wrap_with_maybe(about_comp, Page::About),
         wrap_with_maybe(article_comp, Page::Article),
     });
@@ -119,6 +132,7 @@ void application::switch_to(Page page) {
     header_bar.set_title(
         page == Page::Home ? "tpedia - Terminal Wikipedia" :
         page == Page::Search ? "Search Results" :
+        page == Page::Settings ? "Settings" :
         page == Page::About ? "About tpedia" :
         "Article"
     );

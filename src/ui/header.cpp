@@ -42,8 +42,8 @@ header::header() : title_text("tpedia - Terminal Wikipedia") {
     search_btn = ftxui::Button("Search", [this] {
         if (on_search) on_search();
     });
-    about_btn = ftxui::Button("About", [this] {
-        if (on_about) on_about();
+    settings_btn = ftxui::Button("Settings", [this] {
+        if (on_settings) on_settings();
     });
     close_btn = ftxui::Button("Close", [this] {
         if (on_close) on_close();
@@ -52,7 +52,7 @@ header::header() : title_text("tpedia - Terminal Wikipedia") {
     auto btn_container = ftxui::Container::Horizontal({
         home_btn,
         search_btn,
-        about_btn,
+        settings_btn,
         close_btn,
     });
 
@@ -63,7 +63,7 @@ header::header() : title_text("tpedia - Terminal Wikipedia") {
             ftxui::filler(),
             ftxui::text(title_text) | ftxui::vcenter,
             ftxui::filler(),
-            about_btn->Render(),
+            settings_btn->Render(),
             close_btn->Render(),
         }) | ftxui::color(ftxui::Color::White) | ftxui::bgcolor(ftxui::Color::Blue);
     });
@@ -71,7 +71,7 @@ header::header() : title_text("tpedia - Terminal Wikipedia") {
 
 void header::set_on_home(std::function<void()> cb) { on_home = std::move(cb); }
 void header::set_on_search(std::function<void()> cb) { on_search = std::move(cb); }
-void header::set_on_about(std::function<void()> cb) { on_about = std::move(cb); }
+void header::set_on_settings(std::function<void()> cb) { on_settings = std::move(cb); }
 void header::set_on_close(std::function<void()> cb) { on_close = std::move(cb); }
 void header::set_title(const std::string& t) { title_text = t; }
 

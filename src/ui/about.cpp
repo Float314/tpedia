@@ -25,6 +25,10 @@
 // let this file stay messy as is
 
 about::about() {
+    back_btn = ftxui::Button("Back", [this] {
+        if (on_back) on_back();
+    });
+
     text =R"md(
 tpedia - Wikipedia (Terminal mode!)
 
@@ -61,13 +65,15 @@ All of these licenses can be found in the docs/ folder of the source
 code (<https://github.com/Float314/tpedia>).
     )md";
 
-    body = ftxui::Renderer([this] {
+    body = ftxui::Renderer(back_btn, [this] {
         return ftxui::vbox({
             ftxui::filler(),
             ftxui::text("About tpedia") | ftxui::bold | ftxui::center | ftxui::color(ftxui::Color::IndianRed1Bis),
             ftxui::paragraph(text) | ftxui::center,
             ftxui::filler(),
             ftxui::text("Thank you!") | ftxui::center | ftxui::color(ftxui::Color::Red3Bis),
+            ftxui::separator(),
+            back_btn->Render() | ftxui::center,
             ftxui::filler()
         }) | ftxui::flex;
     });
@@ -75,4 +81,8 @@ code (<https://github.com/Float314/tpedia>).
 
 ftxui::Component about::MainBodyComponent() {
     return body;
+}
+
+void about::set_on_back(std::function<void()> cb) {
+    on_back = std::move(cb);
 }

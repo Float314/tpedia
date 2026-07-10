@@ -22,7 +22,10 @@
 class about : public main_screen {
 private:
     ftxui::Component body;
+    ftxui::Component back_btn;
+    std::function<void()> on_back;
 public:
     about();
+    void set_on_back(std::function<void()> cb);
     ftxui::Component MainBodyComponent() override;
 };
