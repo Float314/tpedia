@@ -68,7 +68,7 @@ void settings_screen::build_ui() {
             : ftxui::text(status_msg) | ftxui::center | ftxui::color(ftxui::Color::Green);
 
         return ftxui::vbox({
-            ftxui::text("Join the Tpedia Discord server! <link>") | ftxui::border | ftxui::color(ftxui::Color::Purple4Bis),
+            ftxui::text("Join the Tpedia Discord server! <https://discord.gg/W6X3gXMpmA>") | ftxui::center | ftxui::border | ftxui::color(ftxui::Color::Purple4Bis),
             ftxui::separator(),
             ftxui::hbox({
                 ftxui::filler(),
@@ -78,11 +78,11 @@ void settings_screen::build_ui() {
                         lang_input_comp->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 20),
                     }),
                     ftxui::hbox({
-                        ftxui::text("Search Limit:   "),
+                        ftxui::text("Search Limit : "), /* Fix spacing */
                         limit_input_comp->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 20),
                     }),
                     ftxui::separator(),
-                    save_btn->Render() | ftxui::center,
+                    save_btn->Render() | ftxui::center | ftxui::vcenter,
                     status_el,
                     ftxui::separator(),
                     about_btn->Render() | ftxui::center,
@@ -90,7 +90,7 @@ void settings_screen::build_ui() {
                 ftxui::filler(),
             }),
             ftxui::filler(),
-        }) | ftxui::flex;
+        }) | ftxui::flex | ftxui::borderDashed;
     });
 }
 

@@ -4,6 +4,16 @@
 > [!NOTE]
 > Starting from v1.0.1-alpha-1. This would not track changes before v1.0.0 and its beta releases. 
 
+# v1.0.0-alpha-2
+
+- Settings Implementation 
+- Settings UI 
+- New Discord Server! Please Join to support tpedia. 
+
+Beta Fixes will start from now on. (MAYBE)
+
+Thanks! See you in v1.0.0-beta-1 (possibly, otherwise v1.1.0-alpha-3) 
+
 # v1.1.0-alpha-1 
 
 - Added a "Please wait for a few mooments" Screen. 

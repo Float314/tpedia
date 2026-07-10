@@ -44,18 +44,21 @@ void settings_manager::set_search_limit(int limit) {
 
 std::string settings_manager::get_config_dir() const {
 #ifdef _WIN32
+    // win32 default appdata
     const char* appdata = std::getenv("APPDATA");
     if (appdata) {
         return std::string(appdata) + "/tpedia";
     }
     return "./tpedia_config";
 #elif defined(__APPLE__)
+    // apple default
     const char* home = std::getenv("HOME");
     if (home) {
         return std::string(home) + "/Library/Application Support/tpedia";
     }
     return "./tpedia_config";
 #else
+    // linux 
     const char* xdg = std::getenv("XDG_CONFIG_HOME");
     if (xdg) {
         return std::string(xdg) + "/tpedia";
