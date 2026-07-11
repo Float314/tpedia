@@ -90,50 +90,10 @@ jobs:
             ${{ matrix.build_dir }}/Release/
             ${{ matrix.build_dir }}/tpedia.*
             ${{ matrix.build_dir }}/tpedia
+            README.md
+            LICENSE
           if-no-files-found: warn
           retention-days: 1
 
-  package:
-    name: Package all platforms
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: build-windows
-          path: dist/windows
-      - uses: actions/download-artifact@v4
-        with:
-          name: build-macos
-          path: dist/macos
-      - uses: actions/download-artifact@v4
-        with:
-          name: build-linux
-          path: dist/linux
 
-      - name: Rename executables with platform prefix
-        shell: bash
-        run: |
-          if ls dist/windows/tpedia.exe 2>/dev/null; then
-            cp dist/windows/tpedia.exe dist/tpedia-windows.exe
-          fi
-          if ls dist/windows/Release/tpedia.exe 2>/dev/null; then
-            cp dist/windows/Release/tpedia.exe dist/tpedia-windows.exe
-          fi
-          if ls dist/macos/tpedia 2>/dev/null; then
-            cp dist/macos/tpedia dist/tpedia-macos
-            chmod +x dist/tpedia-macos
-          fi
-          if ls dist/linux/tpedia 2>/dev/null; then
-            cp dist/linux/tpedia dist/tpedia-linux
-            chmod +x dist/tpedia-linux
-          fi
-
-      - name: Upload combined package
-        uses: actions/upload-artifact@v4
-        with:
-          name: tpedia-release
-          path: dist/tpedia-*
-          if-no-files-found: error
-          retention-days: 7
  
