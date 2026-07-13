@@ -35,6 +35,7 @@ public:
     };
 
     logo_style logo();
+    void set_logo(logo_style style);
 
     void load();
     void save();

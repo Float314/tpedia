@@ -42,6 +42,10 @@ void settings_manager::set_search_limit(int limit) {
     search_limit = limit;
 }
 
+void settings_manager::set_logo(logo_style style) {
+    lgo = style;
+}
+
 std::string settings_manager::get_config_dir() const {
 #ifdef _WIN32
     // win32 default appdata
@@ -91,6 +95,9 @@ void settings_manager::load() {
         }
         if (root.contains("search_limit") && root["search_limit"].is_number_integer()) {
             search_limit = root["search_limit"].get<int>();
+        }
+        if (root.contains("logo_style") && root["logo_style"].is_number_integer()) {
+            lgo = static_cast<logo_style>(root["logo_style"].get<int>());
         }
     } catch (const nlohmann::json::parse_error&) {
     }

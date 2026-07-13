@@ -36,7 +36,7 @@ application::application()
       current_page(Page::Home),
       previous_page(Page::Home)
 {
-    home_page = std::make_unique<homepage>();
+    home_page = std::make_unique<homepage>(settings);
     search_page = std::make_unique<search_results>();
     settings_page = std::make_unique<settings_screen>(settings);
     about_page = std::make_unique<about>();

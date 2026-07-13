@@ -69,6 +69,7 @@ std::string legal_copyrights = R"md(
     )md";
 
 std::string standard_with_slogan = standard + slogan;
+std::string logo2_with_slogan = logo2 + slogan;
 std::string st_slog_copyright = standard + slogan + legal_copyrights;
 
 int *example_neovim_config =

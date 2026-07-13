@@ -19,6 +19,7 @@
 
 #include "ui/header.hpp"
 #include "settings_manager.hpp"
+#include <vector>
 
 class settings_screen : public main_screen {
 private:
@@ -28,7 +29,8 @@ private:
     std::string lang_input;
     std::string limit_input;
     std::string status_msg;
-    int logo_style;
+    int logo_style_idx;
+    std::vector<std::string> logo_style_entries;
 
     ftxui::Component lang_input_comp;
     ftxui::Component limit_input_comp;

@@ -29,13 +29,15 @@ settings_screen::settings_screen(settings_manager& settings)
 {
     lang_input = set.get_lang_code();
     limit_input = std::to_string(set.get_search_limit());
+    logo_style_idx = (set.logo() == settings_manager::logo_style::blocky) ? 0 : 1;
+    logo_style_entries = {"Blocky", "Messy"};
     build_ui();
 }
 
 void settings_screen::build_ui() {
     lang_input_comp = ftxui::Input(&lang_input, "Language code (e.g. en)");
     limit_input_comp = ftxui::Input(&limit_input, "Search limit (e.g. 10)");
-    // logo_style_comp = ftxui::MenuEntryOption();
+    logo_style_comp = ftxui::Radiobox(&logo_style_entries, &logo_style_idx);
 
     save_btn = ftxui::Button("Save", [this] {
         set.set_lang_code(lang_input);
@@ -49,6 +51,9 @@ void settings_screen::build_ui() {
             status_msg = "Invalid search limit!";
             return;
         }
+        set.set_logo(logo_style_idx == 0
+            ? settings_manager::logo_style::blocky
+            : settings_manager::logo_style::messy);
         set.save();
         status_msg = "Settings saved!";
     });
@@ -60,6 +65,7 @@ void settings_screen::build_ui() {
     auto settings_form = ftxui::Container::Vertical({
         lang_input_comp,
         limit_input_comp,
+        logo_style_comp,
         save_btn,
         about_btn,
     });
@@ -82,6 +88,10 @@ void settings_screen::build_ui() {
                     ftxui::hbox({
                         ftxui::text("Search Limit : "), /* Fix spacing */
                         limit_input_comp->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 20),
+                    }),
+                    ftxui::hbox({
+                        ftxui::text("Logo Style   : "),
+                        logo_style_comp->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 20),
                     }),
                     ftxui::separator(),
                     save_btn->Render() | ftxui::center | ftxui::vcenter,

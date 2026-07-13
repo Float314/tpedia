@@ -22,15 +22,21 @@
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/component/event.hpp>
 
-homepage::homepage() {
+homepage::homepage(settings_manager& settings)
+    : set(settings)
+{
     input = ftxui::Input(&search_query, "Search Wikipedia...");
 
     auto vertical = ftxui::Container::Vertical({input});
 
     body = ftxui::Renderer(vertical, [&] {
+        const auto& logo = (set.logo() == settings_manager::logo_style::blocky)
+            ? tpedia_logos::logo2_with_slogan
+            : tpedia_logos::standard_with_slogan;
+
         auto base = ftxui::vbox({
             ftxui::filler(),
-            ftxui::text(tpedia_logos::standard_with_slogan) | ftxui::center,
+            ftxui::text(logo) | ftxui::center,
             ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
             ftxui::text("Enter a search term to begin.") | ftxui::center | ftxui::bold,
             input->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 25) | ftxui::center,

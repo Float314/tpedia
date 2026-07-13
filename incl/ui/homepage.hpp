@@ -18,18 +18,20 @@
 #pragma once
 
 #include "ui/header.hpp"
+#include "settings_manager.hpp"
 #include <functional>
 #include <string>
 
 class homepage : public main_screen {
 private:
+    settings_manager& set;
     std::string search_query;
     ftxui::Component input;
     ftxui::Component body;
     std::function<void(std::string)> on_search;
     std::string query_progress;
 public:
-    homepage();
+    homepage(settings_manager& settings);
     ftxui::Component MainBodyComponent() override;
     void set_on_search(std::function<void(std::string)> cb);
     void clear_progress();
