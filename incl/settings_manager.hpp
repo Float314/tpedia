@@ -30,8 +30,8 @@ public:
     void set_search_limit(int limit);
 
     enum class logo_style{
-        blocky,
-        messy
+        blocky = 0,
+        messy = 1
     };
 
     logo_style logo();
@@ -47,3 +47,4 @@ private:
     int search_limit = 10;
     logo_style lgo = logo_style::messy;
 };
+ 
