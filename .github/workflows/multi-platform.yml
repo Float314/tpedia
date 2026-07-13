@@ -89,8 +89,9 @@ jobs:
           PACKAGE="installer/apt"
           mkdir -p "$PACKAGE/usr/local/bin"
           install -m 755 "${{ matrix.build_dir }}/tpedia" "$PACKAGE/usr/local/bin/"
-          sed -i "s/^Version:.*/Version: $(git describe --tags --always --dirty)/" "$PACKAGE/DEBIAN/control"
-          dpkg-deb --root-owner-group --build "$PACKAGE" "tpedia_$(git describe --tags --always --dirty)_amd64.deb"
+          VERSION="$(git describe --tags --always --dirty 2>/dev/null || echo '0.0.0')"
+          sed -i "s/^Version:.*/Version: $VERSION/" "$PACKAGE/DEBIAN/control"
+          dpkg-deb --root-owner-group --build "$PACKAGE" "tpedia_${VERSION}_amd64.deb"
 
       - name: Upload .deb package
         if: matrix.os == 'ubuntu-latest'
