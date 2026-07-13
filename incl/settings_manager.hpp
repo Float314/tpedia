@@ -29,6 +29,13 @@ public:
     void set_lang_code(const std::string& code);
     void set_search_limit(int limit);
 
+    enum class logo_style{
+        blocky,
+        messy
+    };
+
+    logo_style logo();
+
     void load();
     void save();
 
@@ -38,4 +45,5 @@ private:
 
     std::string lang_code = "en";
     int search_limit = 10;
+    logo_style lgo = logo_style::messy;
 };

@@ -20,6 +20,7 @@
 
 #include "ui/settings.hpp"
 #include <ftxui/component/component.hpp>
+#include <ftxui/component/component_options.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <string>
 
@@ -34,6 +35,7 @@ settings_screen::settings_screen(settings_manager& settings)
 void settings_screen::build_ui() {
     lang_input_comp = ftxui::Input(&lang_input, "Language code (e.g. en)");
     limit_input_comp = ftxui::Input(&limit_input, "Search limit (e.g. 10)");
+    // logo_style_comp = ftxui::MenuEntryOption();
 
     save_btn = ftxui::Button("Save", [this] {
         set.set_lang_code(lang_input);

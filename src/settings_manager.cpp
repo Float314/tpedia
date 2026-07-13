@@ -102,9 +102,19 @@ void settings_manager::save() {
     nlohmann::json root;
     root["lang_code"] = lang_code;
     root["search_limit"] = search_limit;
+    if(lgo == settings_manager::logo_style::messy) {
+        root["logo_style"] = 0;
+    }
+    if(lgo == settings_manager::logo_style::blocky) {
+        root["logo_style"] = 1;
+    }
 
     std::ofstream file(get_config_path());
     if (file.is_open()) {
         file << root.dump(2);
     }
+}
+
+settings_manager::logo_style settings_manager::logo() {
+    return lgo;
 }

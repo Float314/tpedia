@@ -28,9 +28,11 @@ private:
     std::string lang_input;
     std::string limit_input;
     std::string status_msg;
+    int logo_style;
 
     ftxui::Component lang_input_comp;
     ftxui::Component limit_input_comp;
+    ftxui::Component logo_style_comp;
     ftxui::Component save_btn;
     ftxui::Component about_btn;
 
