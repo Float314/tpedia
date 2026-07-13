@@ -60,4 +60,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 <img src="https://www.gnu.org/graphics/gplv3-with-text-136x68.png" alt="gnu gpl v3 logo">
 
-> Logos provided by yousseflmao (modified by me (float314) )
+> Logos provided by dotdotdot (._hello._hello._hello._ on Discord) - modified by me (Float314)
