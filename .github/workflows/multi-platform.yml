@@ -82,6 +82,24 @@ jobs:
       
       - name: Build
         run: cmake --build ${{ matrix.build_dir }} --config Release --parallel
+
+      - name: Build .deb package
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          PACKAGE="installer/apt"
+          mkdir -p "$PACKAGE/usr/local/bin"
+          install -m 755 "${{ matrix.build_dir }}/tpedia" "$PACKAGE/usr/local/bin/"
+          sed -i "s/^Version:.*/Version: $(git describe --tags --always --dirty)/" "$PACKAGE/DEBIAN/control"
+          dpkg-deb --root-owner-group --build "$PACKAGE" "tpedia_$(git describe --tags --always --dirty)_amd64.deb"
+
+      - name: Upload .deb package
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: tpedia_*.deb
+          retention-days: 1
+
       - name: Upload build artefacts
         uses: actions/upload-artifact@v4
         with:
