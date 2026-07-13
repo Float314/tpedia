@@ -1,8 +1,7 @@
-Package:tpedia
-Version:v1.1.0
-Section:utils
-Priority:Optional
-Architecture: all
-Maintainer: Float314 
+Package: tpedia
+Version: 1.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Float314 <github.com/float314>
 Description: Run Wikipedia in the terminal itself!
- 
