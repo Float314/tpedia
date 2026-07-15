@@ -41,16 +41,15 @@ std::string standard = R"md(
 )md";
 
 std::string logo2 = R"md(
-   ░██                                 ░██ ░██           
-   ░██                                 ░██               
-░████████ ░████████   ░███████   ░████████ ░██ ░██████   
-   ░██    ░██    ░██ ░██    ░██ ░██    ░██ ░██      ░██  
-   ░██    ░██    ░██ ░█████████ ░██    ░██ ░██ ░███████  
-   ░██    ░███   ░██ ░██        ░██   ░███ ░██░██   ░██  
-    ░████ ░██░█████   ░███████   ░█████░██ ░██ ░█████░██ 
-          ░██                                            
-          ░██                                            
-                                                         
+           ░██                                 ░██ ░██ 
+           ░██                                 ░██       
+        ░████████ ░████████   ░███████   ░████████ ░██ ░██████ 
+           ░██    ░██    ░██ ░██    ░██ ░██    ░██ ░██      ░██
+           ░██    ░██    ░██ ░█████████ ░██    ░██ ░██ ░███████
+           ░██    ░███   ░██ ░██        ░██   ░███ ░██░██   ░██
+            ░████ ░██░█████   ░███████   ░█████░██ ░██ ░█████░██
+                  ░██                       
+                  ░██                        
       )md";
 
 std::string slogan = R"md(
@@ -64,8 +63,8 @@ std::string slogan = R"md(
     )md";
 
 std::string legal_copyrights = R"md(
-    tpedia - Copyright (C) 2026, Float314. Click on "About" For more details.
-    Licensed under the GNU GPL. Powered by the Wikimedia Foundation.
+    tpedia - Copyright (C) 2026, Float314. Go to Settings -> About for more details.
+    Licensed under the GNU GPL v3 and/or Later versions. Powered by the Wikimedia Foundation.
     )md";
 
 std::string standard_with_slogan = standard + slogan;
