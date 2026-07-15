@@ -15,15 +15,19 @@
   <br><img src="assets/welcome-screen.png" alt="welcome screen" width="800" height="800">
 </details>
 
-tpedia brings Wikipedia articles directly to your terminal emulator, making it extremely easy to browse and find information.
+tpedia brings Wikipedia articles directly to your terminal screen, making it extremely easy to browse and find information.
 
 ## Usage 
 
-Since it is a CLI tool, access tpedia via the command.
+Since it is just an executable, access tpedia via the command.
 
 ```bash
 tpedia
 ```
+
+> [!TIP]
+> Rename the executable to "Wikipedia" or "wpedia" or whatever you wish to, to make it easy to access the executable
+> aka, easing...
 
 ## Why? 
 
@@ -60,4 +64,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 <img src="https://www.gnu.org/graphics/gplv3-with-text-136x68.png" alt="gnu gpl v3 logo">
 
-> Logos provided by dotdotdot (._hello._hello._hello._ on Discord) - modified by me (Float314)
+> Logos provided by dotdotdot (._hello._hello.\_hello.\_ on Discord) - modified by me (Float314)
