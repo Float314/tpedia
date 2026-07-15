@@ -21,5 +21,6 @@
 int main() {
     application app;
     app.run();
+    std::cout << "Join the tpedia discord server! <https://discord.gg/W6X3gXMpmA>" << std::endl;
     return 0;
 }

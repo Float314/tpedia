@@ -51,7 +51,10 @@ application::application()
     header_bar.set_on_home([this] { switch_to(Page::Home); });
     header_bar.set_on_search([this] { switch_to(Page::Search); });
     header_bar.set_on_settings([this] { switch_to(Page::Settings); });
-    header_bar.set_on_close([this] { screen.Exit(); });
+    header_bar.set_on_close([this] {
+        // std::cout << "Join the tpedia discord server! <https://discord.gg/W6X3gXMpmA>" << std::endl;
+        screen.Exit();
+    });
 
     settings_page->set_on_about([this] {
         previous_page = Page::Settings;

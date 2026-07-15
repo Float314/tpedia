@@ -43,7 +43,12 @@ homepage::homepage(settings_manager& settings)
             ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
             ftxui::filler(),
             ftxui::separator(),
-            ftxui::text(tpedia_logos::legal_copyrights)
+            ftxui::hbox({
+                ftxui::text(tpedia_logos::legal_copyrights),
+                ftxui::filler(),
+                ftxui::text("Join the tpedia Discord server! \n <https://discord.gg/W6X3gXMpmA>") | ftxui::border | 
+                    ftxui::color(ftxui::Color::Purple4Bis) | ftxui::vcenter
+            }),
         }) | ftxui::flex;
 
         if (!query_progress.empty()) {
