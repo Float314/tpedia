@@ -86,10 +86,13 @@ set(SOURCES
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+set(windows_api "")
+
 if(WIN32 AND MSVC) # Limit assets embeding to msvc compilers only
     # such as clang-cl and MSVC (there exists no compiler of msvc flags
     # in the market except these two. Clang-cl is peak tho)
     target_sources(${PROJECT_NAME} PRIVATE assets/resource.rc)
+    set(windows_api "kernel32.lib")
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE 
@@ -103,6 +106,7 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
+        ${windows_api}
     nlohmann_json::nlohmann_json
     ftxui::ftxui
     OpenSSL::SSL
