@@ -20,10 +20,14 @@
 #include <ftxui/screen/terminal.hpp>
 #include "ui/endscreen.hpp"
 
+void render_endscreen() {
+    endscreen endsc;
+    endsc.render();
+}
+
 int main() {
     application app;
     app.run();
-    endscreen endsc;
-    endsc.render();
+    render_endscreen();
     return 0;
 }

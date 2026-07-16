@@ -1,3 +1,4 @@
+#pragma once
 #include <ftxui/ftxui.hpp>
 #include <ftxui/screen/screen.hpp>
 
