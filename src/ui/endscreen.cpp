@@ -20,7 +20,7 @@
 #include <ftxui/dom/node.hpp>
 
 int* endscreen::render() {
-    ftxui::Render(endscreen, endscreen_doc); 
-    endscreen.Print();
+    ftxui::Render(endscreen_screen, endscreen_doc); 
+    endscreen_screen.Print();
     return 0;
 }
