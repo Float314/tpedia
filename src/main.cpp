@@ -20,14 +20,21 @@
 #include <ftxui/screen/terminal.hpp>
 #include "ui/endscreen.hpp"
 
+#ifndef _WIN32
 void render_endscreen() {
     endscreen endsc;
     endsc.render();
 }
+#endif
 
 int main() {
     application app;
     app.run();
+#ifdef _WIN32
+    endscreen endsc;
+    endsc.render();
+#else
     render_endscreen();
+#endif
     return 0;
 }
