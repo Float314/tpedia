@@ -18,4 +18,7 @@ Set that path (for where you have extracted) into the PATH environment variable.
 
 ## Linux
 
-[TO BE ANNOUNCED]
+You can download the .deb package. Run - 
+```bash
+sudo apt install tpedia.deb 
+```
