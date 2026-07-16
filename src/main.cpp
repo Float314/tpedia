@@ -17,10 +17,21 @@
 */
 
 #include "application.hpp"
+#include <ftxui/screen/terminal.hpp>
 
 int main() {
     application app;
     app.run();
-    std::cout << "Join the tpedia discord server! <https://discord.gg/W6X3gXMpmA>" << std::endl;
+    ftxui::Element endscreen_doc = ftxui::hbox({
+        ftxui::text("Join the tpedia discord server! <https://discord.gg/W6X3gXMpmA>") | ftxui::border | ftxui::color(ftxui::Color::Purple4Bis)
+    });
+    auto endscreen = ftxui::Screen::Create(
+        ftxui::Dimension::Full(),
+        ftxui::Dimension::Fit(endscreen_doc)
+    );
+
+    ftxui::Render(endscreen, endscreen_doc);
+
+    endscreen.Print();   
     return 0;
 }

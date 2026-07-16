@@ -42,6 +42,10 @@ homepage::homepage(settings_manager& settings)
             input->Render() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 25) | ftxui::center,
             ftxui::separator() | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 15) | ftxui::center,
             ftxui::filler(),
+            ftxui::hbox({
+                ftxui::filler(),
+                ftxui::text("Shh... over here.... ↓") | ftxui::color(ftxui::Color::GrayDark) 
+            }),
             ftxui::separator(),
             ftxui::hbox({
                 ftxui::text(tpedia_logos::legal_copyrights),

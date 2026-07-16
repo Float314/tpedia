@@ -72,7 +72,7 @@ code (<https://github.com/Float314/tpedia>).
             ftxui::paragraph(text) | ftxui::center,
             ftxui::filler(),
             ftxui::text("Thank you!") | ftxui::center | ftxui::color(ftxui::Color::Red3Bis),
-            ftxui::separator(),
+            ftxui::separator() | ftxui::center | ftxui::size(ftxui::WIDTH, ftxui::EQUAL, 20),
             back_btn->Render() | ftxui::center,
             ftxui::filler()
         }) | ftxui::flex;
