@@ -81,6 +81,7 @@ set(SOURCES
     src/ui/scrollbar.cpp
     src/api/wikipedia_client.cpp
     src/request_cleaner/req_cln.cpp
+    src/ui/endscreen.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

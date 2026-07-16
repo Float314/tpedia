@@ -18,20 +18,12 @@
 
 #include "application.hpp"
 #include <ftxui/screen/terminal.hpp>
+#include "ui/endscreen.hpp"
 
 int main() {
     application app;
     app.run();
-    ftxui::Element endscreen_doc = ftxui::hbox({
-        ftxui::text("Join the tpedia discord server! <https://discord.gg/W6X3gXMpmA>") | ftxui::border | ftxui::color(ftxui::Color::Purple4Bis)
-    });
-    auto endscreen = ftxui::Screen::Create(
-        ftxui::Dimension::Full(),
-        ftxui::Dimension::Fit(endscreen_doc)
-    );
-
-    ftxui::Render(endscreen, endscreen_doc);
-
-    endscreen.Print();   
+    endscreen endsc;
+    endsc.render();
     return 0;
 }
