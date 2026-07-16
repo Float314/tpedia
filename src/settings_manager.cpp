@@ -22,6 +22,11 @@
 #include <filesystem>
 #include <cstdlib>
 
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 settings_manager::settings_manager() {
     load();
 }
@@ -49,9 +54,13 @@ void settings_manager::set_logo(logo_style style) {
 std::string settings_manager::get_config_dir() const {
 #ifdef _WIN32
     // win32 default appdata
-    const char* appdata = std::getenv("APPDATA");
+    char* appdata = new char[MAX_PATH]; // MAX_PATH from windows
+    GetEnvironmentVariableA("APPDATA", appdata, MAX_PATH);
     if (appdata) {
-        return std::string(appdata) + "/tpedia";
+        std::string temp(appdata);
+        temp += "/tpedia";
+        delete appdata;
+        return temp;
     }
     return "./tpedia_config";
 #elif defined(__APPLE__)
