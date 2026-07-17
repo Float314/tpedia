@@ -105,10 +105,19 @@ target_include_directories(${PROJECT_NAME}
     "${CMAKE_CURRENT_BINARY_DIR}/third_party"
 )
 
+if(WIN32) 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-        ${windows_api}
+    ${windows_api}
     nlohmann_json::nlohmann_json
     ftxui::ftxui
     OpenSSL::SSL
     OpenSSL::Crypto
 )
+else()
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    nlohmann_json::nlohmann_json
+    ftxui::ftxui
+    OpenSSL::SSL
+    OpenSSL::Crypto
+)
+endif()
