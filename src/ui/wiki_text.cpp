@@ -26,8 +26,6 @@ wiki_text::wiki_text() {
     scrollable = scroll_text_comp();
     body = ftxui::Renderer(scrollable, [this] {
         return ftxui::vbox({
-            ftxui::text(page_title) | ftxui::bold | ftxui::center | ftxui::underlined,
-            ftxui::separator(),
             scrollable->Render() | ftxui::flex,
         }) | ftxui::flex;
     });
