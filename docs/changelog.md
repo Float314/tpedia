@@ -4,6 +4,10 @@
 > [!NOTE]
 > Starting from v1.0.1-alpha-1. This would not track changes before v1.0.0 and its beta releases. 
 
+# v1.0.0-rc-1 
+
+all the changes from beta
+
 # v1.0.0-alpha-2
 
 - Settings Implementation 
