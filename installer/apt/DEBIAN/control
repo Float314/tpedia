@@ -3,5 +3,5 @@ Version: 1.1.0
 Section: utils
 Priority: optional
 Architecture: amd64
-Maintainer: Float314 <github.com/float314>
+Maintainer: Float314 <float314@proton.me>
 Description: Run Wikipedia in the terminal itself!
