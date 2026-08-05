@@ -1,0 +1,121 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest, macos-latest, ubuntu-latest ]
+
+        include:
+          - os: windows-latest
+            artifact_name: release-windows
+            build_dir: build
+            binary_paths: |
+              build/Release/tpedia.exe
+
+          - os: macos-latest
+            artifact_name: release-macos
+            build_dir: build
+            binary_paths: |
+              build/tpedia
+
+          - os: ubuntu-latest
+            artifact_name: release-linux
+            build_dir: build
+            binary_paths: |
+              build/tpedia
+              tpedia_*.deb
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install OpenSSL (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libssl-dev
+
+      - name: Install OpenSSL (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install openssl@3
+          # Make find_package(OpenSSL) pick up the Homebrew installation
+          echo "OPENSSL_ROOT_DIR=$(brew --prefix openssl@3)" >> "$GITHUB_ENV"
+
+      - name: Install OpenSSL (Windows)
+        if: matrix.os == 'windows-latest'
+        run: choco install openssl --no-progress -y
+
+      - name: Install GCC (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install gcc
+          GCC_VER="$(ls "$(brew --prefix)"/bin/gcc-* | head -1 | grep -oE '[0-9]+$')"
+          echo "CC=gcc-${GCC_VER}" >> "$GITHUB_ENV"
+          echo "CXX=g++-${GCC_VER}" >> "$GITHUB_ENV"
+
+      - name: Set up MSVC dev environment
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: CMake - Configure
+        run: |
+          cmake -B ${{ matrix.build_dir }} \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DOPENSSL_ROOT_DIR="${{ env.OPENSSL_ROOT_DIR }}" \
+                -DCMAKE_UNITY_BUILD=ON
+        shell: bash
+
+      - name: Build
+        run: cmake --build ${{ matrix.build_dir }} --config Release --parallel
+
+      - name: Build .deb package
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          PACKAGE="installer/apt"
+          mkdir -p "$PACKAGE/usr/local/bin"
+          install -m 755 "${{ matrix.build_dir }}/tpedia" "$PACKAGE/usr/local/bin/"
+          VERSION="${GITHUB_REF_NAME#v}"
+          sed -i "s/^Version:.*/Version: $VERSION/" "$PACKAGE/DEBIAN/control"
+          dpkg-deb --root-owner-group --build "$PACKAGE" "tpedia_${VERSION}_amd64.deb"
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.binary_paths }}
+          if-no-files-found: error
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all binaries
+        uses: actions/download-artifact@v4
+        with:
+          path: release
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/**
+          generate_release_notes: true
