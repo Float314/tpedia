@@ -12,7 +12,7 @@
     <b>View preview image</b>
   </summary>
 
-  <br><img src="assets/welcome-screen.png" alt="welcome screen" width="800" height="800">
+  <br><img src="other/assets/welcome-screen.png" alt="welcome screen" width="800" height="800">
 </details>
 
 tpedia brings Wikipedia articles directly to your terminal screen, making it extremely easy to browse and find information.
