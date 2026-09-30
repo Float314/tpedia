@@ -87,7 +87,7 @@ jobs:
       - name: Build .deb package
         if: matrix.os == 'ubuntu-latest'
         run: |
-          PACKAGE="installer/apt"
+          PACKAGE="other/installer/apt"
           mkdir -p "$PACKAGE/usr/local/bin"
           install -m 755 "${{ matrix.build_dir }}/tpedia" "$PACKAGE/usr/local/bin/"
           VERSION="${GITHUB_REF_NAME#v}"
