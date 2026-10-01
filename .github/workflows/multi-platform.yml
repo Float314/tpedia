@@ -58,7 +58,7 @@ jobs:
         # OpenSSL is shitting up in Chocolatey Package manager. We need to install an earlier version.
       - name: Install OpenSSL (Windows)
         if: matrix.os == 'windows-latest'
-        run: choco install openssl --no-progress -y --version=3.6.2
+        run: echo "Hi" # Test to see if OpenSSL is already isntalled. It is giving workflow issues...
  
       - name: Install GCC (macOS)
         if: matrix.os == 'macos-latest'
