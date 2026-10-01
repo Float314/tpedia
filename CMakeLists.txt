@@ -91,7 +91,7 @@ set(windows_api "")
 if(WIN32 AND MSVC) # Limit assets embeding to msvc compilers only
     # such as clang-cl and MSVC (there exists no compiler of msvc flags
     # in the market except these two. Clang-cl is peak tho)
-    target_sources(${PROJECT_NAME} PRIVATE assets/resource.rc)
+    target_sources(${PROJECT_NAME} PRIVATE /other/assets/resource.rc)
     set(windows_api "kernel32.lib")
 endif()
 
