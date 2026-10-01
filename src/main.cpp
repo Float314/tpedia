@@ -20,12 +20,21 @@
 #include <ftxui/screen/terminal.hpp>
 #include "ui/endscreen.hpp"
 
-
-
 int main() {
+    try{
     application app;
     app.run();
     endscreen endsc; 
     endsc.render();
     return 0;
+    } catch(const std::runtime_error& e) {
+        std::cerr << "Runtime error: " << e.what() << std::endl;
+        return 1;
+    } catch(const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return 1;
+    } catch(...) {
+        std::cerr << "Unknown error occurred." << std::endl;
+        return 1;
+    }
 }

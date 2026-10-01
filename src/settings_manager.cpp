@@ -55,11 +55,14 @@ std::string settings_manager::get_config_dir() const {
 #ifdef _WIN32
     // win32 default appdata
     char* appdata = new char[MAX_PATH]; // MAX_PATH from windows
-    GetEnvironmentVariableA("APPDATA", appdata, MAX_PATH);
+    if(GetEnvironmentVariableA("APPDATA", appdata, MAX_PATH) == 1){
+        delete[] appdata;
+        throw std::runtime_error("Failed to get APPDATA environment variable.");
+    }
     if (appdata) {
         std::string temp(appdata);
         temp += "/tpedia";
-        delete appdata;
+        delete[] appdata;
         return temp;
     }
     return "./tpedia_config";
