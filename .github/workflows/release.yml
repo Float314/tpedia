@@ -59,7 +59,7 @@ jobs:
 
       - name: Install OpenSSL (Windows)
         if: matrix.os == 'windows-latest'
-        run: choco install openssl --no-progress -y
+        run: echo hi 
 
       - name: Install GCC (macOS)
         if: matrix.os == 'macos-latest'
