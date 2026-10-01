@@ -55,9 +55,10 @@ jobs:
           # Make find_package(OpenSSL) pick up the Homebrew installation
           echo "OPENSSL_ROOT_DIR=$(brew --prefix openssl@3)" >> "$GITHUB_ENV"
  
+        # OpenSSL is shitting up in Chocolatey Package manager. We need to install an earlier version.
       - name: Install OpenSSL (Windows)
         if: matrix.os == 'windows-latest'
-        run: choco install openssl --no-progress -y
+        run: choco install openssl --no-progress -y --version=3.4.7
  
       - name: Install GCC (macOS)
         if: matrix.os == 'macos-latest'

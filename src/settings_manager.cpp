@@ -74,7 +74,7 @@ std::string settings_manager::get_config_dir() const {
     }
     return "./tpedia_config";
 #else
-    // linux 
+    // linux or freeBSD 
     const char* xdg = std::getenv("XDG_CONFIG_HOME");
     if (xdg) {
         return std::string(xdg) + "/tpedia";
