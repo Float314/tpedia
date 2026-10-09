@@ -1,3 +1,8 @@
+tpedia (1.1.3) stable; urgency=low
+    * Delete dead discord links
+    * Fix CI/CD (Irrelevant ik but idk) 
+ -- Float314 Fri 09 Oct 2026 19:17:00 +0530
+
 tpedia (1.1.1-rc-1) unstable; urgency=medium
     * Improved Win32 Error Handling.
     * No change will have in Linux as well as MacOS machines
