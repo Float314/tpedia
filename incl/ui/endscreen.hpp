@@ -22,7 +22,7 @@
 class endscreen {
     private:
         ftxui::Element endscreen_doc =  ftxui::hbox({
-            ftxui::text("Thank you for using tpedia!"),
+            ftxui::text("Thank you for using tpedia! \n"),
             ftxui::text("Star Project on Github! <https://github.com/Float314/tpedia>") | ftxui::border | ftxui::color(ftxui::Color::Gold3Bis)
         });
         ftxui::Screen endscreen_screen = ftxui::Screen::Create(

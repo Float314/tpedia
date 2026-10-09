@@ -50,7 +50,7 @@ homepage::homepage(settings_manager& settings)
             ftxui::hbox({
                 ftxui::text(tpedia_logos::legal_copyrights),
                 ftxui::filler(),
-                ftxui::text("Star project on GitHub!") | ftxui::border | 
+                ftxui::text("Star project on GitHub! <https://github.com/Float314/tpedia>") | ftxui::border | 
                     ftxui::color(ftxui::Color::Gold3) | ftxui::vcenter
             }),
         }) | ftxui::flex;
