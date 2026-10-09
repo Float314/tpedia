@@ -50,8 +50,8 @@ homepage::homepage(settings_manager& settings)
             ftxui::hbox({
                 ftxui::text(tpedia_logos::legal_copyrights),
                 ftxui::filler(),
-                ftxui::text("Join the tpedia Discord server! \n <https://discord.gg/W6X3gXMpmA>") | ftxui::border | 
-                    ftxui::color(ftxui::Color::Purple4Bis) | ftxui::vcenter
+                ftxui::text("Star project on GitHub!") | ftxui::border | 
+                    ftxui::color(ftxui::Color::Gold3) | ftxui::vcenter
             }),
         }) | ftxui::flex;
 
