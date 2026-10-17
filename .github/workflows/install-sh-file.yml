@@ -1,0 +1,29 @@
+name: test install.sh file
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs: 
+    test-install-sh:
+        name: Test install.sh file (${{ matrix.os }})
+        runs-on: ${{ matrix.runner || matrix.os }}
+    
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ windows-latest, macos-latest, ubuntu-latest ]
+    
+        steps:
+        
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            submodules: recursive
+    
+        - name: Run install.sh script
+          run: |
+            chmod +x ./install.sh
+            ./install.sh
