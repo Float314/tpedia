@@ -44,4 +44,4 @@ echo "This program comes with ABSOLUTELY NO WARRANTY; for details goto settings 
 echo "This is free software, and you are welcome to redistribute it"
 echo "under certain conditions; see settings -> about for details."
 
-echo "\x1B[32mInstallation Successful! \x1B[37m"
+echo "Installation complete! You can now run tpedia by typing 'tpedia' in your terminal."
