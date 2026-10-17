@@ -20,8 +20,9 @@
 echo "Installing tpedia..."
 
 echo "Build Mode: from source" 
+echo "To disable this, please refer to .deb package in Releases."
 
-echo "Installing dependencies..."
+echo "--- Installing dependencies --- "
 sudo apt update
 sudo apt install -y git cmake ninja-build build-essential 
 
@@ -43,3 +44,4 @@ echo "This program comes with ABSOLUTELY NO WARRANTY; for details goto settings 
 echo "This is free software, and you are welcome to redistribute it"
 echo "under certain conditions; see settings -> about for details."
 
+echo "\x1B[32mInstallation Successful! \x1B[37m"
