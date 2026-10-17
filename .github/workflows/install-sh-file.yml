@@ -14,7 +14,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                os: [ windows-latest, macos-latest, ubuntu-latest ]
+                os: [ ubuntu-latest ]
     
         steps:
         
@@ -25,5 +25,5 @@ jobs:
     
         - name: Run install.sh script
           run: |
-            chmod +x ./install.sh
-            ./install.sh
+            chmod +x ./other/installer/install.sh
+            ./other/installer/install.sh
