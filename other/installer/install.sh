@@ -20,10 +20,6 @@
 echo "Installing tpedia..."
 
 echo "Build Mode: from source" 
-if [ "$EUID" -ne 0 ]; then
-    echo "Error: Please run with sudo." >&2
-    exit 1
-fi
 
 echo "Installing dependencies..."
 sudo apt update
